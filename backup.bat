@@ -1,0 +1,15 @@
+php artisan iseed docventa_reclamo --force
+php artisan iseed guia --force
+php artisan iseed guia_reclamo --force
+php artisan iseed imagen_reclamo --force
+php artisan iseed informacion_producto --force
+php artisan iseed reclamo --force
+php artisan iseed reclamo_analisis --force
+php artisan iseed reclamo_compra --force
+php artisan iseed reclamo_condicion --force
+php artisan iseed reclamo_credito --force
+php artisan iseed reclamo_diagrama_ad --force
+php artisan iseed reclamo_diagrama_caucho --force
+php artisan iseed reclamo_especial --force
+php artisan iseed reclamo_estado --force
+php artisan iseed reclamo_estatus --force

@@ -1,0 +1,6 @@
+Revisar los CRUDs de Neumaticos
+	Listo Medida
+Revisar si esta tomando la sucursal correcta al buscar factura - listo
+Cambiar serial de produccion por boleta - listo
+Validaciones de la creacion de la base de datos (incluir Errores)
+Revisar Bug de Garantia- listo

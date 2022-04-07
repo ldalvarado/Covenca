@@ -1,0 +1,7 @@
+.dt-buttons{
+    position: absolute !important;
+  }
+
+  .dataTables_wrapper .dataTables_info{
+    float: none !important;
+  }
