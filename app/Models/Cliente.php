@@ -17,7 +17,7 @@ class Cliente extends Model
      * @var array
      */
     protected $fillable = [
-        'idUser','subtipo','direccion','telefono','kmFlota','perFlota','nombre', 'doc','contacto','estado','ciudad','idSucursal','renovado','carga','carcasa'
+        'idUser','subtipo','direccion','telefono','kmFlota','perFlota','nombre', 'doc','contacto','estado','ciudad','idSucursal','renovado','carga','marcaTemporal'
     ];
 
     /**
@@ -30,6 +30,9 @@ class Cliente extends Model
     ];
     public function Marcas(){
         return $this->hasMany(ClienteMarca::class, 'idCliente', 'id')->get();
+    }
+    public function Carcasas(){
+        return $this->hasMany(ClienteCarcasa::class, 'idCliente', 'id')->get();
     }
     public function Vehiculos(){
         return $this->hasOne(ClienteVehiculo::class, 'idCliente', 'id')->first();

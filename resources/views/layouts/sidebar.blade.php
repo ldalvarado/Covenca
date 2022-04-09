@@ -85,13 +85,13 @@
 
         <ul class="br-menu-sub nav flex-column">
             <li class="nav-item">  <!--href=" {{ url('/register')}}-->
-                <a href="{{url('/Reportes/Clientes')}}" id="nav-link_rc" class="nav-link">Clientes</a>
+                <a href="{{url('/Reportes/Clientes')}}" id="nav-link_rc" class="nav-link">Clientes por distribuidor</a>
             </li>
             <li class="nav-item">  <!--href=" {{ url('/register')}}-->
-                <a href="{{url('/Reportes/Usuarios')}}" id="nav-link_rg" class="nav-link">Usuarios</a>
+                <a href="{{url('/Reportes/Usuarios')}}" id="nav-link_rg" class="nav-link">Detalles del vendedor</a>
             </li>
             <li class="nav-item">  <!--href=" {{ url('/register')}}-->
-                <a href="{{url('/Reportes/DataCliente')}}" id="nav-link_rd" class="nav-link">Datos del cliente</a>
+                <a href="{{url('/Reportes/DataCliente')}}" id="nav-link_rd" class="nav-link">Ficha del cliente</a>
             </li>
         </ul>
         

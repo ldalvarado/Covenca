@@ -17,15 +17,19 @@
                                 <h6 style="margin-bottom:0px;">CLIENTE(S): 1000</h6>
                             </div>
                             <div class="col align-self-center options-new">
-                                <select class="form-control selectNew" data-live-search="true" data-placeholder="SUCURSAL(ES)">
+                                <select onchange="FiltroTable()" id="idSucursal" class="form-control selectNew" data-live-search="true" data-placeholder="SUCURSAL(ES)">
                                     <option label="SUCURSAL(ES)"></option>
-                                    <option value="uno">Uno</option>
+                                    @foreach($Sucursales as $Sucursal )
+                                    <option value={{$Sucursal->id}}>{{$Sucursal->descripcion}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col align-self-center options-new">
-                                <select class="form-control selectNew" data-live-search="true" data-placeholder="USUARIO(S)">
+                                <select onchange="FiltroTable()" id="idUsuario" class="form-control selectNew" data-live-search="true" data-placeholder="USUARIO(S)">
                                     <option label="USUARIO(S)"></option>
-                                    <option value="uno">Uno</option>
+                                    @foreach($Usuarios as $Usuario )
+                                    <option value={{$Usuario->id}}>{{$Usuario->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col align-self-center options-new">
@@ -56,7 +60,16 @@
                                         </tr>
                                     </thead>
                                 
-                                    <tbody class="text-center">
+                                    <tbody class="text-center" id="bodyCliente">
+                                        @foreach($Clientes_tabla as $Cliente_tabla)
+                                        <tr class="elementos">
+                                            <td> {{$Cliente_tabla->usuario}} </td>
+                                            <td> {{$Cliente_tabla->nombre}} </td>
+                                            <td> {{$Cliente_tabla->CantidadVehRemolques}} </td>
+                                            <td> {{$Cliente_tabla->CantidadRemolques}} </td>
+                                            <td> {{$Cliente_tabla->totalCaucho}} </td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
@@ -107,6 +120,34 @@
             }
         ],
     });
+    function FiltroTable(){
+        var idSucursal = $("#idSucursal").val();
+        var idUsuario = $("#idUsuario").val();
+        
+        $.ajax({
+            type:'Post',
+            url:'<?php echo route('getFiltroReporteCliente')?>',
+            data:{
+                "_token": $("meta[name='csrf-token']").attr("content"),
+                "idSucursal": idSucursal,
+                "idUsuario": idUsuario,
+            },
+            success: function(data){
+                console.log(data);
+                var listCliente = data.Clientes;
+                table.clear().draw();
+                for (let index = 0; index < listCliente.length; index++) {
+                    table.row.add([
+                        listCliente[index].usuario,
+                        listCliente[index].nombre,
+                        listCliente[index].CantidadVehRemolques,
+                        listCliente[index].CantidadRemolques,
+                        listCliente[index].totalCaucho,
+                    ]).draw( false );
+                }
+            }
+        })
+    }
 </script>
 @endsection
 

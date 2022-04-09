@@ -17,7 +17,7 @@ class ClienteCarcasa extends Model
      * @var array
      */
     protected $fillable = [
-        'descripcion'
+        'idCarcasa','idCliente'
     ];
 
     /**
@@ -28,8 +28,7 @@ class ClienteCarcasa extends Model
     protected $hidden = [
     	
     ];
-    
-
-    
-    
+    public function Cliente() {
+        return $this->belongsTo(User::class, 'idCliente', 'id');
+    }
 }

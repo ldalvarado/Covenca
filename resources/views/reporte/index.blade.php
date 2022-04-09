@@ -17,11 +17,11 @@
                     </div>
                     <div class="col-4 align-self-center text-center">
                         <h4>ESTIMACIÓN DE CAMBIOS DE CAUCHOS(MES)</h4>
-                        <h4>0<h4>
+                        <h4>{{$EstimacionMes}}<h4>
                     </div>
                     <div class="col-4 align-self-center text-center">
                         <h4>ESTIMACIÓN DE COMPRA CAUCHO AL AÑO</h4>
-                        <h4>0</h4>
+                        <h4>{{$EstimacionAno}}</h4>
                     </div>
                 </div>
                 <div class="card w-100">
@@ -71,11 +71,11 @@
                                         <tr>
                                             <th class="text-white" style="text-align: center;"><strong>CLIENTES</strong></th>
                                             <th class="text-white" style="text-align: center;"><strong>MARCA TEMPORAL</strong></th>
-                                            <th class="text-white" style="text-align: center;"><strong>Km RECORRIDOS TOTAL</strong></th>
-                                            <th class="text-white" style="text-align: center;"><strong>CANTIDAD VDI</strong></th>
-                                            <th class="text-white" style="text-align: center;"><strong>CANTIDAD REMODELADO</strong></th>
+                                            <th class="text-white" style="text-align: center;"><strong>Km RECORRIDOS TOTAL / MES</strong></th>
+                                            <th class="text-white" style="text-align: center;"><strong>CANTIDAD VEH. MOTRICES</strong></th>
+                                            <th class="text-white" style="text-align: center;"><strong>CANTIDAD REMOLQUES</strong></th>
                                             <th class="text-white" style="text-align: center;"><strong>CAUCHOS OPERATIVOS</strong></th>
-                                            <th class="text-white" style="text-align: center;"><strong>ESTIMACIÓN DE CAMBIOS</strong></th>
+                                            <th class="text-white" style="text-align: center;"><strong>ESTIMACIÓN DE CAMBIOS DE CAUCHOS</strong></th>
                                         </tr>
                                     </thead>
                                 
@@ -83,10 +83,10 @@
                                         @foreach($Clientes_tabla as $Cliente_tabla)
                                         <tr class="elementos">
                                             <td> {{$Cliente_tabla->nombre}} </td>
-                                            <td> 0 </td>
+                                            <td> {{$Cliente_tabla->marcaTemporal}} </td>
                                             <td> {{$Cliente_tabla->kmFlota}} </td>
-                                            <td> 0 </td>
-                                            <td> 0 </td>
+                                            <td> {{$Cliente_tabla->CantidadVehRemolques}} </td>
+                                            <td> {{$Cliente_tabla->CantidadRemolques}} </td>
                                             <td> {{$Cliente_tabla->totalCaucho}} </td>
                                             <td> {{$Cliente_tabla->renovado}} </td>
                                         </tr>
@@ -162,10 +162,10 @@
                 for (let index = 0; index < listCliente.length; index++) {
                     table.row.add([
                         listCliente[index].nombre,
-                        0,
+                        listCliente[index].marcaTemporal,
                         listCliente[index].kmFlota,
-                        0,
-                        0,
+                        listCliente[index].CantidadVehRemolques,
+                        listCliente[index].CantidadRemolques,
                         listCliente[index].totalCaucho,
                         listCliente[index].renovado
                     ]).draw( false );
